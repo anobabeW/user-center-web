@@ -3,24 +3,16 @@
 
 declare namespace API {
   type CurrentUser = {
-    name?: string;
-    avatar?: string;
-    userid?: string;
-    email?: string;
-    signature?: string;
-    title?: string;
-    group?: string;
-    tags?: { key?: string; label?: string }[];
-    notifyCount?: number;
-    unreadCount?: number;
-    country?: string;
-    access?: string;
-    geographic?: {
-      province?: { label?: string; key?: string };
-      city?: { label?: string; key?: string };
-    };
-    address?: string;
-    phone?: string;
+    id: number;
+    userName: string;
+    userAccount: string;
+    avatarUrl?: string;
+    gender: number;
+    phone: string;
+    email: string;
+    userStatus: number;
+    userRole: number;
+    createTime: string;
   };
 
   type LoginResult = {
@@ -28,6 +20,8 @@ declare namespace API {
     type?: string;
     currentAuthority?: string;
   };
+
+  type RegisterResult = number;
 
   type PageParams = {
     current?: number;
@@ -68,6 +62,13 @@ declare namespace API {
     type?: string;
   };
 
+  type RegisterParams = {
+    userAccount?: string;
+    userPassword?: string;
+    checkPassword?: string;
+    type?: string;
+  };
+
   type ErrorResponse = {
     /** 业务约定的错误码 */
     errorCode: string;
@@ -78,7 +79,7 @@ declare namespace API {
   };
 
   type NoticeIconList = {
-    data?: NoticeIconItem[];
+    data?: CurrentUser[];
     /** 列表的内容总数 */
     total?: number;
     success?: boolean;

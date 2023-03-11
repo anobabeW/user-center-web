@@ -32,7 +32,7 @@ const Name = () => {
     };
   });
 
-  return <span className={`${nameClassName} anticon`}>{currentUser?.name}</span>;
+  return <span className={`${nameClassName} anticon`}>{currentUser?.userName}</span>;
 };
 
 const AvatarLogo = () => {
@@ -51,7 +51,9 @@ const AvatarLogo = () => {
     };
   });
 
-  return <Avatar size="small" className={avatarClassName} src={currentUser?.avatar} alt="avatar" />;
+  return (
+    <Avatar size="small" className={avatarClassName} src={currentUser?.avatarUrl} alt="avatar" />
+  );
 };
 
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
@@ -124,7 +126,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 
   const { currentUser } = initialState;
 
-  if (!currentUser || !currentUser.name) {
+  if (!currentUser || !currentUser.userName) {
     return loading;
   }
 
